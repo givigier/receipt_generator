@@ -1,5 +1,6 @@
 require_relative "lib/item/parser"
 require_relative "lib/item/entity"
+require_relative "lib/receipt"
 
 baskets = [
   [
@@ -29,5 +30,6 @@ baskets.each_with_index do |basket, i|
             next
           end
 
-  items.each { |item| puts item.to_s }
+  puts Receipt.new(items:).to_s
+  puts "\n"
 end
