@@ -3,7 +3,7 @@ require_relative "./parser_error"
 module Item
   class Parser
     def parse(str:)
-      match = str.match(/(?<quantity>\d+) (?<name>.*?) at (?<price>\d+\.\d+)/)
+      match = str.match(/\A(?<quantity>\d+) (?<name>.*?) at (?<price>\d+\.\d+)\z/)
       raise ParserError unless match
 
       {

@@ -1,4 +1,5 @@
 require_relative "lib/item/parser"
+require_relative "lib/item/entity"
 
 baskets = [
   [
@@ -22,13 +23,11 @@ parser = Item::Parser.new
 baskets.each_with_index do |basket, i|
   puts "=== Basket ##{i} ==="
   items = basket.map do |item_line|
-            parser.parse(str: item_line)
+            Item::Entity.new(**parser.parse(str: item_line))
           rescue Item::ParserError
             print "Error parsing item: #{item_line}"
             next
           end
 
-  puts "\n"
-  puts items
-  puts "\n"
+  items.each { |item| puts item.to_s }
 end
