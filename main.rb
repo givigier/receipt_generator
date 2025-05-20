@@ -1,6 +1,8 @@
 require_relative "lib/item/parser"
 require_relative "lib/item/entity"
-require_relative "lib/receipt"
+require_relative "lib/receipt/data"
+require_relative "lib/receipt/presenter"
+require_relative 'lib/tax_calculator'
 
 baskets = [
   [
@@ -29,7 +31,8 @@ baskets.each_with_index do |basket, i|
             print "Error parsing item: #{item_line}"
             next
           end
-
-  puts Receipt.new(items:).to_s
+  
+  data = Receipt::Data.new(items:, tax_calculator: TaxCalculator)
+  puts Receipt::Presenter.new(data:).print_receipt
   puts "\n"
 end

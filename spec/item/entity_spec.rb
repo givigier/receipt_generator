@@ -3,28 +3,28 @@ require "item/entity"
 
 RSpec.describe Item::Entity do
   describe "#category" do
-    context "when the item is a book" do
+    context "when the item name contains book" do
       it "returns books" do
         entity = described_class.new(name: "book", price: 0, quantity: 0)
         expect(entity.category).to eq "books"
       end
     end
 
-    context "when the item is a chocolate bar" do
+    context "when the item name contains chocolate" do
       it "returns food" do
         entity = described_class.new(name: "chocolate bar", price: 0, quantity: 0)
         expect(entity.category).to eq "food"
       end
     end
 
-    context "when the item is headache pills" do
+    context "when the item name contains pill" do
       it "returns medical" do
         entity = described_class.new(name: "headache pills", price: 0, quantity: 0)
         expect(entity.category).to eq "medical"
       end
     end
 
-    context "when the item is a perfume" do
+    context "when the item name contains perfume" do
       it "returns unknown" do
         entity = described_class.new(name: "perfume", price: 0, quantity: 0)
         expect(entity.category).to eq "unknown"
